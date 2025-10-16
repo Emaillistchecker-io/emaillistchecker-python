@@ -4,7 +4,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/emaillistchecker.svg)](https://pypi.org/project/emaillistchecker/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Official Python SDK for the [EmailListChecker](https://platform.emaillistchecker.io) email verification API.
+Official Python SDK for the [EmailListChecker](https://emaillistchecker.io) email verification API.
 
 ## Features
 
@@ -37,8 +37,8 @@ print(f"Score: {result['score']}")     # 0.0 to 1.0
 
 ## Get Your API Key
 
-1. Sign up at [platform.emaillistchecker.io](https://platform.emaillistchecker.io/register)
-2. Get your API key from the [API Dashboard](https://platform.emaillistchecker.io/api)
+1. Sign up at [emaillistchecker.io](https://emaillistchecker.io/register)
+2. Get your API key from the [API Dashboard](https://emaillistchecker.io/api)
 3. Start verifying!
 
 ## Usage Examples
@@ -244,7 +244,7 @@ client = EmailListChecker(
 
 ## Support
 
-- **Documentation**: [platform.emaillistchecker.io/api](https://platform.emaillistchecker.io/api)
+- **Documentation**: [emaillistchecker.io/api](https://emaillistchecker.io/api)
 - **Email**: support@emaillistchecker.io
 - **Issues**: [GitHub Issues](https://github.com/Emaillistchecker-io/emaillistchecker-python/issues)
 
@@ -264,4 +264,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-Made with ❤️ by [EmailListChecker](https://platform.emaillistchecker.io)
+Made with ❤️ by [EmailListChecker](https://emaillistchecker.io)

@@ -21,7 +21,7 @@ class EmailListChecker:
 
     Args:
         api_key (str): Your EmailListChecker API key
-        base_url (str): API base URL (default: https://platform.emaillistchecker.io/api/v1)
+        base_url (str): API base URL (default: https://emaillistchecker.io/api/v1)
         timeout (int): Request timeout in seconds (default: 30)
 
     Example:
@@ -30,7 +30,7 @@ class EmailListChecker:
         >>> print(result['result'])  # 'deliverable', 'undeliverable', 'risky', 'unknown'
     """
 
-    def __init__(self, api_key: str, base_url: str = "https://platform.emaillistchecker.io/api/v1", timeout: int = 30):
+    def __init__(self, api_key: str, base_url: str = "https://emaillistchecker.io/api/v1", timeout: int = 30):
         self.api_key = api_key
         self.base_url = base_url.rstrip('/')
         self.timeout = timeout
