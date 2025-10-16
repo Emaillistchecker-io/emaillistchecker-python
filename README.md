@@ -1,7 +1,6 @@
 # EmailListChecker Python SDK
 
-[![PyPI version](https://img.shields.io/pypi/v/emaillistchecker.svg)](https://pypi.org/project/emaillistchecker/)
-[![Python versions](https://img.shields.io/pypi/pyversions/emaillistchecker.svg)](https://pypi.org/project/emaillistchecker/)
+[![Python versions](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Official Python SDK for the [EmailListChecker](https://emaillistchecker.io) email verification API.
@@ -18,7 +17,15 @@ Official Python SDK for the [EmailListChecker](https://emaillistchecker.io) emai
 ## Installation
 
 ```bash
-pip install emaillistchecker
+pip install git+https://github.com/Emaillistchecker-io/emaillistchecker-python.git
+```
+
+Or clone and install locally:
+
+```bash
+git clone https://github.com/Emaillistchecker-io/emaillistchecker-python.git
+cd emaillistchecker-python
+pip install -e .
 ```
 
 ## Quick Start
