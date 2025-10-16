@@ -1,0 +1,55 @@
+"""EmailListChecker Python SDK Setup"""
+
+from setuptools import setup, find_packages
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setup(
+    name="emaillistchecker",
+    version="1.0.0",
+    author="EmailListChecker",
+    author_email="developers@emaillistchecker.io",
+    description="Official Python SDK for EmailListChecker email verification API",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/Emaillistchecker-io/emaillistchecker-python",
+    project_urls={
+        "Bug Tracker": "https://github.com/Emaillistchecker-io/emaillistchecker-python/issues",
+        "Documentation": "https://platform.emaillistchecker.io/api",
+        "Homepage": "https://platform.emaillistchecker.io",
+    },
+    packages=find_packages(exclude=["tests", "examples"]),
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Communications :: Email",
+        "Topic :: Internet :: WWW/HTTP",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.7",
+    install_requires=[
+        "requests>=2.25.0",
+    ],
+    keywords=[
+        "email",
+        "verification",
+        "validation",
+        "checker",
+        "email-validation",
+        "email-verification",
+        "api",
+        "sdk",
+        "emaillistchecker",
+    ],
+    license="MIT",
+)
