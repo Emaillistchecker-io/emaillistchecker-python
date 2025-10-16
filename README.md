@@ -37,8 +37,8 @@ print(f"Score: {result['score']}")     # 0.0 to 1.0
 
 ## Get Your API Key
 
-1. Sign up at [emaillistchecker.io](https://emaillistchecker.io/register)
-2. Get your API key from the [API Dashboard](https://emaillistchecker.io/api)
+1. Sign up at [platform.emaillistchecker.io](https://platform.emaillistchecker.io/register)
+2. Get your API key from the [API Dashboard](https://platform.emaillistchecker.io/api)
 3. Start verifying!
 
 ## Usage Examples
@@ -244,7 +244,7 @@ client = EmailListChecker(
 
 ## Support
 
-- **Documentation**: [emaillistchecker.io/api](https://emaillistchecker.io/api)
+- **Documentation**: [platform.emaillistchecker.io/api](https://platform.emaillistchecker.io/api)
 - **Email**: support@emaillistchecker.io
 - **Issues**: [GitHub Issues](https://github.com/Emaillistchecker-io/emaillistchecker-python/issues)
 

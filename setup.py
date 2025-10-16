@@ -16,7 +16,7 @@ setup(
     url="https://github.com/Emaillistchecker-io/emaillistchecker-python",
     project_urls={
         "Bug Tracker": "https://github.com/Emaillistchecker-io/emaillistchecker-python/issues",
-        "Documentation": "https://emaillistchecker.io/api",
+        "Documentation": "https://platform.emaillistchecker.io/api",
         "Homepage": "https://emaillistchecker.io",
     },
     packages=find_packages(exclude=["tests", "examples"]),
