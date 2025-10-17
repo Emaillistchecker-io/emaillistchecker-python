@@ -111,6 +111,48 @@ for email_data in results['data']:
     print(f"{email_data['email']}: {email_data['result']}")
 ```
 
+### Batch Verification with File Upload
+
+You can also upload CSV, TXT, or XLSX files for batch verification:
+
+```python
+# Upload file for batch verification
+with open('emails.csv', 'rb') as file:
+    batch = client.verify_batch_file(
+        file=file,
+        name='My Email List',
+        auto_start=True
+    )
+
+batch_id = batch['id']
+print(f"Batch ID: {batch_id}")
+print(f"Total emails: {batch['total_emails']}")
+print(f"Filename: {batch['filename']}")
+
+# Check progress (same as JSON batch)
+while True:
+    status = client.get_batch_status(batch_id)
+    print(f"Progress: {status['progress']}%")
+
+    if status['status'] == 'completed':
+        break
+
+    time.sleep(5)
+
+# Download results
+results = client.get_batch_results(batch_id, format='csv', filter='valid')
+```
+
+**Supported file formats:**
+- CSV (.csv) - Comma-separated values
+- TXT (.txt) - Plain text, one email per line
+- Excel (.xlsx, .xls) - Excel spreadsheet
+
+**File requirements:**
+- Max file size: 10MB
+- Max emails: 10,000 per file
+- Files are automatically parsed to extract emails
+
 ### Email Finder
 
 ```python

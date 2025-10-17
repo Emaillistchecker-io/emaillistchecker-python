@@ -166,6 +166,95 @@ class EmailListChecker:
         response = self._request('POST', '/verify/batch', json=data)
         return response.get('data', response)
 
+    def verify_batch_file(self, file, name: Optional[str] = None,
+                         callback_url: Optional[str] = None, auto_start: bool = True) -> Dict:
+        """
+        Upload file for batch verification (CSV, TXT, or XLSX)
+
+        Args:
+            file: File object or path to file (CSV, TXT, or XLSX)
+            name (str, optional): Name for this batch
+            callback_url (str, optional): Webhook URL for completion notification
+            auto_start (bool): Start verification immediately (default: True)
+
+        Returns:
+            dict: Batch submission result with keys:
+                - id: Batch ID
+                - status: 'pending', 'processing', 'completed', 'failed'
+                - total_emails: Total emails in batch
+                - filename: Original filename
+                - created_at: Creation timestamp
+
+        Example:
+            >>> with open('emails.csv', 'rb') as f:
+            ...     batch = client.verify_batch_file(f, name='My List')
+            >>> batch_id = batch['id']
+        """
+        # Prepare form data
+        files = {}
+        data = {'auto_start': str(auto_start).lower()}
+
+        if name:
+            data['name'] = name
+        if callback_url:
+            data['callback_url'] = callback_url
+
+        # Handle file input
+        if isinstance(file, str):
+            # If file is a path string, open it
+            files['file'] = open(file, 'rb')
+        else:
+            # Assume it's already a file object
+            files['file'] = file
+
+        # Temporarily remove Content-Type header for multipart/form-data
+        headers = {'Authorization': f'Bearer {self.api_key}'}
+
+        try:
+            url = f"{self.base_url}/verify/batch/upload"
+            response = requests.post(
+                url,
+                headers=headers,
+                files=files,
+                data=data,
+                timeout=self.timeout
+            )
+
+            # Handle response
+            response_data = response.json() if response.content else {}
+
+            if response.status_code == 401:
+                raise AuthenticationError(
+                    response_data.get('error', 'Invalid API key'),
+                    status_code=401,
+                    response=response_data
+                )
+            elif response.status_code == 402:
+                raise InsufficientCreditsError(
+                    response_data.get('error', 'Insufficient credits'),
+                    status_code=402,
+                    response=response_data
+                )
+            elif response.status_code == 422:
+                raise ValidationError(
+                    response_data.get('message', 'Validation error'),
+                    status_code=422,
+                    response=response_data
+                )
+            elif not response.ok:
+                raise APIError(
+                    response_data.get('error', f'API error: {response.status_code}'),
+                    status_code=response.status_code,
+                    response=response_data
+                )
+
+            return response_data.get('data', response_data)
+
+        finally:
+            # Close file if we opened it
+            if isinstance(file, str) and 'file' in files:
+                files['file'].close()
+
     def get_batch_status(self, batch_id: int) -> Dict:
         """
         Get batch verification status
